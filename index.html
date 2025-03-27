@@ -7,11 +7,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- 左上のタイトル -->
+    <header>
+        <h2>ダウンロードサイト</h2>
+        <button id="themeToggle">🌙</button> <!-- ダーク/ライトモード切替ボタン -->
+    </header>
+
     <div class="container">
-        <h1>ファイルダウンロードサイト</h1>
-        <p>以下のボタンをクリックしてファイルをダウンロードしてください。</p>
+        <h1>ファイルダウンロード</h1>
+        <p>以下のバージョンを選択してダウンロードしてください。</p>
+
+        <!-- バージョン選択 -->
+        <select id="versionSelect">
+            <option value="sample_v1.zip">バージョン 1.0</option>
+            <option value="sample_v2.zip">バージョン 2.0</option>
+            <option value="sample_v3.zip">バージョン 3.0</option>
+        </select>
+
+        <!-- ダウンロードボタン -->
         <button id="downloadBtn">ダウンロード</button>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
