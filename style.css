@@ -1,47 +1,45 @@
-/* 共通デザイン */
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 50px;
-    transition: background 0.3s, color 0.3s;
-}
-
-/* 左上のタイトル */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: var(--header-bg);
-    color: var(--header-text);
-}
-
-header h2 {
+/* **全体を画面ぴったりにする** */
+html, body {
+    height: 100%;
     margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    display: flex;
 }
 
-/* ダークモード/ライトモード切替ボタン */
-#themeToggle {
-    font-size: 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-/* ボックスデザイン */
-.container {
-    background: var(--box-bg);
+/* **左のバージョン選択エリア** */
+.sidebar {
+    width: 25%;
+    height: 100vh;
+    background: var(--sidebar-bg);
+    color: var(--text-color);
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: inline-block;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
-/* ボタン */
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.sidebar select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* **右のメインエリア** */
+.main-content {
+    width: 75%;
+    height: 100vh;
+    background: var(--bg-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+/* **ボタン** */
 button {
     padding: 10px 20px;
     font-size: 18px;
@@ -56,33 +54,63 @@ button:hover {
     background-color: #0056b3;
 }
 
-/* セレクトボックス */
-select {
-    font-size: 16px;
-    padding: 5px;
-    margin: 10px;
+/* **モード切替スイッチ** */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
 }
 
-/* ライトモード */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 25px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #007bff;
+}
+
+input:checked + .slider:before {
+    transform: translateX(25px);
+}
+
+/* **ライトモード（デフォルト）** */
 :root {
-    --box-bg: white;
-    --header-bg: #f8f9fa;
-    --header-text: black;
-    --text-color: black;
     --bg-color: #f4f4f4;
+    --text-color: black;
+    --sidebar-bg: #ffffff;
 }
 
-/* ダークモード */
+/* **ダークモード** */
 .dark-mode {
-    --box-bg: #333;
-    --header-bg: #222;
-    --header-text: white;
-    --text-color: white;
     --bg-color: #121212;
+    --text-color: white;
+    --sidebar-bg: #222;
 }
 
-/* 背景色と文字色を適用 */
-body {
-    background: var(--bg-color);
-    color: var(--text-color);
-}
