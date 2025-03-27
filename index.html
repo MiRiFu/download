@@ -3,36 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ダウンロードサイト</title>
-    <link rel="stylesheet" href="style.css">
+    <title>ダウンロードページ</title>
+    <link rel="stylesheet" href="style.css?v=1.2">
 </head>
 <body>
     <div class="container">
-        <!-- 左のバージョン選択エリア -->
+        <!-- 左側 (タイトル + バージョンリスト) -->
         <aside class="sidebar">
-            <h2>バージョン選択</h2>
-            <select id="versionSelect">
-                <option value="sample_v1.zip">バージョン 1.0</option>
-                <option value="sample_v2.zip">バージョン 2.0</option>
-                <option value="sample_v3.zip">バージョン 3.0</option>
-            </select>
+            <h1>ダウンロード</h1> <!-- 左上タイトル -->
+            <div class="version-list">
+                <button onclick="downloadVersion('1.0')">v1.0</button>
+                <button onclick="downloadVersion('1.1')">v1.1</button>
+                <button onclick="downloadVersion('1.2')">v1.2</button>
+                <!-- 必要なら追加 -->
+            </div>
         </aside>
 
-        <!-- 右のメインエリア -->
+        <!-- 右側 (メインコンテンツ) -->
         <main class="main-content">
-            <header>
-                <h1>ダウンロードサイト</h1>
-                <!-- スイッチ型のモード切替 -->
-                <label class="switch">
-                    <input type="checkbox" id="themeToggle">
-                    <span class="slider"></span>
-                </label>
-            </header>
-            <p>以下のボタンをクリックしてダウンロードしてください。</p>
-            <button id="downloadBtn">ダウンロード</button>
+            <h2>選択したバージョンの情報</h2>
+            <p id="version-info">バージョンを選択してください。</p>
         </main>
+
+        <!-- 右上のモード切替 -->
+        <div class="mode-toggle">
+            <label class="switch">
+                <input type="checkbox" id="modeSwitch">
+                <span class="slider"></span>
+            </label>
+        </div>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
+
