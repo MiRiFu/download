@@ -1,32 +1,24 @@
-// ダウンロード処理
-document.getElementById("downloadBtn").addEventListener("click", function () {
-    const selectedVersion = document.getElementById("versionSelect").value;
-    const link = document.createElement("a");
-    link.href = "files/" + selectedVersion;
-    link.download = selectedVersion;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-});
-
-// ダーク/ライトモード切替処理
-document.getElementById("themeToggle").addEventListener("click", function () {
-    document.body.classList.toggle("dark-mode");
-    const isDark = document.body.classList.contains("dark-mode");
-    this.textContent = isDark ? "☀️" : "🌙";
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-});
-
-// ページ読み込み時にテーマを復元
+// **ページが完全に読み込まれたら実行**
 window.onload = function () {
     const savedTheme = localStorage.getItem("theme");
+    const themeToggle = document.getElementById("modeSwitch");
+
     if (savedTheme === "dark") {
         document.body.classList.add("dark-mode");
-        document.getElementById("themeToggle").textContent = "☀️";
+        if (themeToggle) themeToggle.checked = true;
+    }
+
+    // **ダークモード切り替え**
+    if (themeToggle) {
+        themeToggle.addEventListener("change", function () {
+            document.body.classList.toggle("dark-mode", this.checked);
+            localStorage.setItem("theme", this.checked ? "dark" : "light");
+        });
     }
 };
 
-// バージョン選択時の動作
+// **バージョン選択時の動作**
 function downloadVersion(version) {
-    document.getElementById("version-info").textContent = "選択中のバージョン: " + version;
+    const versionInfo = document.getElementById("version-info");
+    if (versionInfo) versionInfo.textContent = "選択中のバージョン: " + version;
 }
