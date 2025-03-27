@@ -1,18 +1,47 @@
+/* 共通デザイン */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 50px;
-    background-color: #f4f4f4;
+    transition: background 0.3s, color 0.3s;
 }
 
+/* 左上のタイトル */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--header-bg);
+    color: var(--header-text);
+}
+
+header h2 {
+    margin: 0;
+}
+
+/* ダークモード/ライトモード切替ボタン */
+#themeToggle {
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* ボックスデザイン */
 .container {
-    background: white;
+    background: var(--box-bg);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: inline-block;
 }
 
+/* ボタン */
 button {
     padding: 10px 20px;
     font-size: 18px;
@@ -25,4 +54,35 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+/* セレクトボックス */
+select {
+    font-size: 16px;
+    padding: 5px;
+    margin: 10px;
+}
+
+/* ライトモード */
+:root {
+    --box-bg: white;
+    --header-bg: #f8f9fa;
+    --header-text: black;
+    --text-color: black;
+    --bg-color: #f4f4f4;
+}
+
+/* ダークモード */
+.dark-mode {
+    --box-bg: #333;
+    --header-bg: #222;
+    --header-text: white;
+    --text-color: white;
+    --bg-color: #121212;
+}
+
+/* 背景色と文字色を適用 */
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
 }
