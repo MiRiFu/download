@@ -1,3 +1,22 @@
+// **ページが完全に読み込まれたら実行**
+ window.onload = function () {
+     const savedTheme = localStorage.getItem("theme");
+     const themeToggle = document.getElementById("modeSwitch");
+ 
+     if (savedTheme === "dark") {
+         document.body.classList.add("dark-mode");
+         if (themeToggle) themeToggle.checked = true;
+     }
+ 
+     // **ダークモード切り替え**
+     if (themeToggle) {
+         themeToggle.addEventListener("change", function () {
+             document.body.classList.toggle("dark-mode", this.checked);
+             localStorage.setItem("theme", this.checked ? "dark" : "light");
+         });
+     }
+ };
+
 document.addEventListener("DOMContentLoaded", function () {
     const downloadBtn = document.getElementById("downloadBtn");
     const versionList = document.querySelectorAll(".version-item"); // バージョン選択リスト
