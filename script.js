@@ -25,3 +25,13 @@ window.onload = function () {
         document.getElementById("themeToggle").textContent = "☀️";
     }
 };
+
+// ダークモード切り替え
+document.getElementById("modeSwitch").addEventListener("change", function() {
+    document.body.classList.toggle("dark-mode", this.checked);
+});
+
+// バージョン選択時の動作
+function downloadVersion(version) {
+    document.getElementById("version-info").textContent = "選択中のバージョン: " + version;
+}
