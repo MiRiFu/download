@@ -1,4 +1,4 @@
-/* **全体を画面ぴったりにする** */
+/* **基本設定** */
 html, body {
     height: 100%;
     margin: 0;
@@ -7,14 +7,14 @@ html, body {
     font-family: Arial, sans-serif;
 }
 
-/* **横幅を固定し、全体をフレックスで並べる** */
+/* **全体レイアウト** */
 .container {
     display: flex;
     width: 100vw;
     height: 100vh;
 }
 
-/* **左のバージョン選択エリア（25%）** */
+/* **左のサイドバー（タイトル + バージョン一覧）** */
 .sidebar {
     width: 25%;
     background: var(--sidebar-bg);
@@ -23,30 +23,22 @@ html, body {
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.sidebar h2 {
-    margin-top: 0;
+.sidebar h1 {
+    margin: 0;
+    font-size: 24px;
 }
 
-.sidebar select {
+/* **バージョン選択のボタン配置** */
+.version-list {
+    margin-top: 15px;
+}
+
+.version-list button {
+    display: block;
     width: 100%;
     padding: 10px;
     font-size: 16px;
-}
-
-/* **右のメインエリア（75%）** */
-.main-content {
-    flex-grow: 1; /* 残りのスペースを埋める */
-    background: var(--bg-color);
-    color: var(--text-color);
-    text-align: center;
-    padding: 50px;
-    box-sizing: border-box;
-}
-
-/* **ボタン** */
-button {
-    padding: 10px 20px;
-    font-size: 18px;
+    margin: 5px 0;
     background-color: #007bff;
     color: white;
     border: none;
@@ -54,11 +46,28 @@ button {
     border-radius: 5px;
 }
 
-button:hover {
+.version-list button:hover {
     background-color: #0056b3;
 }
 
-/* **モード切替スイッチ** */
+/* **右のメインエリア** */
+.main-content {
+    flex-grow: 1;
+    background: var(--bg-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+/* **右上のモード切替スイッチ** */
+.mode-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+/* **スイッチスタイル** */
 .switch {
     position: relative;
     display: inline-block;
@@ -117,4 +126,3 @@ input:checked + .slider:before {
     --text-color: white;
     --sidebar-bg: #222;
 }
-
