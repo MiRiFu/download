@@ -53,7 +53,7 @@ function downloadVersion() {
     }
 
     // ダウンロード URL 設定
-    const fileUrl = `https://github.com/mirifu/download/releases/download/v${version}/${version}.zip`;
+    const fileUrl = `downloads/${version}.zip`; // ダウンロード URL 設定
 
     console.log("ダウンロード URL:", fileUrl); // 確認用
 
