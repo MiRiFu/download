@@ -5,28 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ダウンロードページ</title>
     <link rel="stylesheet" href="style.css?v=1.2">
+    <link rel="icon" href="favicon.ico" type="image/icon">
 </head>
 <body>
     <div class="container">
-        <!-- 左側 (タイトル + バージョンリスト) -->
         <aside class="sidebar">
-            <h1>ダウンロード</h1> <!-- 左上タイトル -->
+            <h1>ダウンロード</h1>
             <div class="version-list">
                 <button onclick="downloadVersion('1.0')">v1.0</button>
                 <button onclick="downloadVersion('1.1')">v1.1</button>
                 <button onclick="downloadVersion('1.2')">v1.2</button>
-                <!-- 必要なら追加 -->
             </div>
         </aside>
 
-        <!-- 右側 (メインコンテンツ) -->
         <main class="main-content">
             <h2>選択したバージョンの情報</h2>
             <p id="version-info">バージョンを選択してください。</p>
             <button id="downloadBtn">ダウンロード</button>
         </main>
 
-        <!-- 右上のモード切替 -->
         <div class="mode-toggle">
             <label class="switch">
                 <input type="checkbox" id="modeSwitch">
