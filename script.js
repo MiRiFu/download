@@ -66,6 +66,8 @@ function downloadVersion() {
     document.body.removeChild(link);
 }
 
-window.downloadVersion = function(version) {
-    document.getElementById("version-info").textContent = "選択中のバージョン: " + version;
-};
+// **バージョン選択時の動作**
+function downloadVersion(version) {
+    const versionInfo = document.getElementById("version-info");
+    if (versionInfo) versionInfo.textContent = "選択中のバージョン: " + version;
+}
