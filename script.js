@@ -66,3 +66,30 @@ function downloadVersion() {
     document.body.removeChild(link);
 }
 
+function downloadVersion(version) {
+    if (!version) {
+        alert("バージョンを選択してください");
+        return;
+    }
+
+    console.log(`バージョン ${version} をダウンロードします`);
+    const link = document.createElement("a");
+    link.href = `downloads/${version}.zip`; // 適切なパスに修正
+    link.download = `${version}.zip`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const modeSwitch = document.getElementById("modeSwitch");
+    if (!modeSwitch) {
+        console.error("テーマスイッチが見つかりません");
+        return;
+    }
+
+    modeSwitch.addEventListener("change", function () {
+        document.body.classList.toggle("dark-mode", modeSwitch.checked);
+    });
+});
+
