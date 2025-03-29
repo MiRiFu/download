@@ -41,9 +41,9 @@ html, body {
     margin: 5px 0;
     background-color: #007bff;
     color: white;
-    border: none;
+    border: 2px solid white; /* 白いふち追加 */
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 0px; /* 四角形にする */
 }
 
 .version-list button:hover {
@@ -56,12 +56,15 @@ html, body {
     padding: 10px;
     background-color: #007bff;
     color: white;
-    border: none;
-    border-radius: 5px;
+    border: 2px solid white; /* 白いふち追加 */
+    border-radius: 0px; /* 四角形にする */
     cursor: pointer;
     font-size: 16px;
     text-align: center;
-    margin: 20px auto;
+    margin: 20px auto; /* 水平方向中央配置 */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* 完全中央配置 */
 }
 
 #downloadBtn:hover {
@@ -144,3 +147,4 @@ input:checked + .slider:before {
     --text-color: white;
     --sidebar-bg: #222;
 }
+
