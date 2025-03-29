@@ -1,12 +1,6 @@
 // **ダウンロード処理**
 document.getElementById("downloadBtn").addEventListener("click", function () {
-    const selectedVersion = document.getElementById("versionSelect").value;
-    const link = document.createElement("a");
-    link.href = "files/" + selectedVersion;
-    link.download = selectedVersion;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    downloadVersion();
 });
 
 // **ダーク/ライトモード切替（スイッチ型）**
@@ -27,13 +21,7 @@ window.onload = function () {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-    const downloadBtn = document.getElementById("downloadBtn");
     const versionList = document.querySelectorAll(".version-item"); // バージョン選択リスト
-
-    if (!downloadBtn) {
-        console.error("ダウンロードボタンが見つかりません");
-        return;
-    }
 
     // バージョンをクリックすると `.selected-version` をつける
     versionList.forEach(item => {
@@ -42,7 +30,9 @@ document.addEventListener("DOMContentLoaded", function () {
             this.classList.add("selected-version");
         });
     });
+});
 
+// **バージョンダウンロード関数**
 function downloadVersion() {
     console.log("ダウンロードボタンがクリックされました");
 
@@ -62,14 +52,16 @@ function downloadVersion() {
     }
 
     // ダウンロード URL 設定
-    const fileUrl = `downloads/${version}.zip`; // ダウンロード URL 設定
+    const fileUrl = `downloads/${version}.zip`;
 
     console.log("ダウンロード URL:", fileUrl); // 確認用
 
+    // **ダウンロード処理**
+    const link = document.createElement("a");
+    link.href = fileUrl;
+    link.download = `${version}.zip`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
 
-// **バージョン選択時の動作**
-function downloadVersion(version) {
-    const versionInfo = document.getElementById("version-info");
-    if (versionInfo) versionInfo.textContent = "選択中のバージョン: " + version;
-}
