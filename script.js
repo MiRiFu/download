@@ -17,6 +17,15 @@
      }
  };
 
+// **ページ読み込み時にテーマを復元**
+window.onload = function () {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        themeToggle.checked = true;
+    }
+};
+
 document.addEventListener("DOMContentLoaded", function () {
     const downloadBtn = document.getElementById("downloadBtn");
     const versionList = document.querySelectorAll(".version-item"); // バージョン選択リスト
