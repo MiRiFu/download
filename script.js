@@ -66,13 +66,6 @@ function downloadVersion() {
 
     console.log("ダウンロード URL:", fileUrl); // 確認用
 
-    // ダウンロード処理
-    const link = document.createElement("a");
-    link.href = fileUrl;
-    link.download = `${version}.zip`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
 }
 
 // **バージョン選択時の動作**
