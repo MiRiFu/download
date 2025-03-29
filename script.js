@@ -1,21 +1,21 @@
-// **ページが完全に読み込まれたら実行**
- window.onload = function () {
-     const savedTheme = localStorage.getItem("theme");
-     const themeToggle = document.getElementById("modeSwitch");
- 
-     if (savedTheme === "dark") {
-         document.body.classList.add("dark-mode");
-         if (themeToggle) themeToggle.checked = true;
-     }
- 
-     // **ダークモード切り替え**
-     if (themeToggle) {
-         themeToggle.addEventListener("change", function () {
-             document.body.classList.toggle("dark-mode", this.checked);
-             localStorage.setItem("theme", this.checked ? "dark" : "light");
-         });
-     }
- };
+// **ダウンロード処理**
+document.getElementById("downloadBtn").addEventListener("click", function () {
+    const selectedVersion = document.getElementById("versionSelect").value;
+    const link = document.createElement("a");
+    link.href = "files/" + selectedVersion;
+    link.download = selectedVersion;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+});
+
+// **ダーク/ライトモード切替（スイッチ型）**
+const themeToggle = document.getElementById("themeToggle");
+
+themeToggle.addEventListener("change", function () {
+    document.body.classList.toggle("dark-mode");
+    localStorage.setItem("theme", this.checked ? "dark" : "light");
+});
 
 // **ページ読み込み時にテーマを復元**
 window.onload = function () {
