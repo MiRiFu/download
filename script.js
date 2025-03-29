@@ -1,95 +1,35 @@
-// **ページの要素をすべて読み込んでからスクリプトを実行**
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("ページが完全に読み込まれました");
-
-    // **ダウンロードボタン**
+    const versionButtons = document.querySelectorAll(".version-list button");
     const downloadBtn = document.getElementById("downloadBtn");
-    if (downloadBtn) {
-        downloadBtn.addEventListener("click", downloadVersion);
-    } else {
-        console.error("Error: ダウンロードボタンが見つかりません");
-    }
+    const themeSwitch = document.getElementById("themeSwitch");
+    let selectedVersion = null;
 
-    // **ダーク/ライトモード切替（スイッチ型）**
-    const themeToggle = document.getElementById("themeToggle");
-    if (themeToggle) {
-        themeToggle.addEventListener("change", function () {
-            document.body.classList.toggle("dark-mode");
-            localStorage.setItem("theme", this.checked ? "dark" : "light");
+    // バージョンボタンのクリックイベント
+    versionButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            selectedVersion = this.dataset.version;
+            console.log("選択されたバージョン:", selectedVersion);
         });
+    });
 
-        // **ページ読み込み時にテーマを復元**
-        const savedTheme = localStorage.getItem("theme");
-        if (savedTheme === "dark") {
-            document.body.classList.add("dark-mode");
-            themeToggle.checked = true;
+    // ダウンロードボタンのクリックイベント
+    downloadBtn.addEventListener("click", function () {
+        if (!selectedVersion) {
+            alert("バージョンを選択してください。");
+            return;
         }
-    } else {
-        console.error("Error: テーマスイッチが見つかりません");
-    }
+        const downloadUrl = `https://mirifu.github.io/downloads/${selectedVersion}.zip`;
+        console.log("ダウンロード開始:", downloadUrl);
+        window.location.href = downloadUrl;
+    });
 
-    // **バージョン選択処理**
-    const versionList = document.querySelectorAll(".version-item");
-    versionList.forEach(item => {
-        item.addEventListener("click", function () {
-            document.querySelectorAll(".version-item").forEach(v => v.classList.remove("selected-version"));
-            this.classList.add("selected-version");
+    // ダークモード切り替え
+    if (themeSwitch) {
+        themeSwitch.addEventListener("change", function () {
+            document.body.classList.toggle("dark-mode", this.checked);
         });
-    });
-});
-
-// **バージョンダウンロード関数**
-function downloadVersion() {
-    console.log("ダウンロードボタンがクリックされました");
-
-    const selectedVersion = document.querySelector(".selected-version");
-    if (!selectedVersion) {
-        alert("バージョンを選択してください");
-        return;
-    }
-
-    const version = selectedVersion.dataset.version;
-    if (!version) {
-        alert("バージョンデータが取得できません");
-        return;
-    }
-
-    const fileUrl = `downloads/${version}.zip`;
-    console.log("ダウンロード URL:", fileUrl);
-
-    // **ダウンロードリンクを作成して実行**
-    const link = document.createElement("a");
-    link.href = fileUrl;
-    link.download = `${version}.zip`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
-
-function downloadVersion(version) {
-    if (!version) {
-        alert("バージョンを選択してください");
-        return;
-    }
-
-    console.log(`バージョン ${version} をダウンロードします`);
-    const link = document.createElement("a");
-    link.href = `downloads/${version}.zip`; // 適切なパスに修正
-    link.download = `${version}.zip`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    const modeSwitch = document.getElementById("modeSwitch");
-    if (!modeSwitch) {
+    } else {
         console.error("テーマスイッチが見つかりません");
-        return;
     }
-
-    modeSwitch.addEventListener("change", function () {
-        document.body.classList.toggle("dark-mode", modeSwitch.checked);
-    });
 });
 
